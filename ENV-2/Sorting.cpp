@@ -1,10 +1,12 @@
 #include "Sorting.h"
 #include <algorithm>
 
-bool compareByAbs(const ComplexNumber& a,const ComplexNumber& b){ // определяем метод для сравнения 2 компл чисел по модулю
+// defining a method to compare 2 complex numbers by modulus
+bool compareByAbs(const ComplexNumber& a,const ComplexNumber& b){ 
     return a.abs() < b.abs();
 }
 
-void sortComplexNumbers(std::vector<ComplexNumber>& numbers){// определяем метод для сортировки по модулю 
+// defining a method for sorting by modulus
+void sortComplexNumbers(std::vector<ComplexNumber>& numbers){
     std::sort(numbers.begin(), numbers.end(), compareByAbs);
 }

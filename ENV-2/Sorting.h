@@ -3,6 +3,7 @@
 #include <vector>
 #include "ComplexNumber.h"
 
-void sortComplexNumbers(std::vector<ComplexNumber>& numbers);// метод сортеровки
+// sorting method
+void sortComplexNumbers(std::vector<ComplexNumber>& numbers);
 
 #endif

@@ -1,4 +1,5 @@
-#ifndef COMPLEXNUMBER_H // создание макроса для предотвращения повторной компиляции
+// creating a macros to prevent re-compilation
+#ifndef COMPLEXNUMBER_H
 #define COMPLEXNUMBER_H
 
 class ComplexNumber{
@@ -6,17 +7,24 @@ class ComplexNumber{
         double real;
         double imag;
     public:
-        ComplexNumber(double r = 0.0,double i = 0.0); // конструктор с дефолтными значениями 0 0 если в мейн не зададим значения
+    
+        // constructor with default values 0, 0 if values are not provided in main
+        ComplexNumber(double r = 0.0,double i = 0.0); 
         
-        ComplexNumber operator+(const ComplexNumber& other);// опертор +
+        // operator +".
+        ComplexNumber operator+(const ComplexNumber& other);
 
-        ComplexNumber operator-(const ComplexNumber& other);// опертор -
+        // operator -".
+        ComplexNumber operator-(const ComplexNumber& other);
         
-        ComplexNumber operator*(const ComplexNumber& other);// опертор *
+        // operator *".
+        ComplexNumber operator*(const ComplexNumber& other);
         
-        double abs() const;// метод для полученя модуля
+        // method for obtaining the modulus
+        double abs() const;
         
-        void print() const;// метод вывода значений
+        // method for outputting values
+        void print() const;
 };
 
 #endif

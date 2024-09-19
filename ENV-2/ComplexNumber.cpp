@@ -4,25 +4,30 @@
 using std::sqrt;
 using std::cout;
 using std::endl;
+//defining the constructor
+ComplexNumber::ComplexNumber(double r,double i)  : real(r) , imag(i){}
 
-ComplexNumber::ComplexNumber(double r,double i)  : real(r) , imag(i){} // определяем  конструктор
-
-ComplexNumber ComplexNumber::operator+(const ComplexNumber& other){ // определяем  опертор +
-    return ComplexNumber(real + other.real,imag + other.imag);
+// defining the operator +
+ComplexNumber ComplexNumber::operator+(const ComplexNumber& other){
+return ComplexNumber(real + other.real,imag + other.imag);
 }
 
-ComplexNumber ComplexNumber::operator-(const ComplexNumber& other){ // определяем  опертор -
+// defining the operator -
+ComplexNumber ComplexNumber::operator-(const ComplexNumber& other){ 
     return ComplexNumber(real - other.real,imag - other.imag);
 }
 
-ComplexNumber ComplexNumber::operator*(const ComplexNumber& other){ // определяем  опертор *
+// defining the operator *
+ComplexNumber ComplexNumber::operator*(const ComplexNumber& other){
     return ComplexNumber(real * other.real,imag * other.imag);
 }
 
-double ComplexNumber::abs() const{// определяем модуль
+// defining the module
+double ComplexNumber::abs() const{
     return sqrt(real*real + imag*imag);
 }
 
-void ComplexNumber::print() const{// создаем метод для вывода 
+// creating a method for output
+void ComplexNumber::print() const{ 
     cout << "(" << real << " + " << imag << ")"<< endl;;
 }
