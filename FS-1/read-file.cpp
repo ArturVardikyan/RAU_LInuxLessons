@@ -1,26 +1,40 @@
-#include <iostream> // Using libraries for file managment
-#include <fstream>
+#include <iostream> //Using libraries for file managment
+#include <fcntl.h>
+#include <unistd.h>
+#include <sys/stat.h>
 #include <cstring>
-#include <cerrno>
+
 
 //Defining method for file opening/reading
 void readFile(const char* filePath){
     //calling  std func for file opening 
-    std::ifstream file(filePath);
+    int fd = open(filePath,O_RDONLY);
 
     //Cheking if file opened succefully
-    if(!file.is_open()){
-        std::cerr << "Error opening file " << strerror(errno) << std::endl;
+    if (fd == -1)
+    {
+       perror("Error opening file");
+    }
+    struct stat fileStat;
+    //Geting dile status
+    if(fstat(fd,&fileStat) == -1){
+        perror("Error geting file information");
+        close(fd);
         return;
     }
+
     //Geting 1kb for reading
     char buffer[1024];
+    ssize_t byteRead = 0;
     //Defining cikle for reading
-    while(file.read(buffer, sizeof(buffer)) || file.gcount() > 0){
-        std::cout.write(buffer, file.gcount());
+    while((byteRead = read(fd,buffer, sizeof(buffer))) > 0){
+        std::cerr.write(buffer, byteRead);
+    }
+    if(byteRead == -1){
+        std::cerr << "Error reading file";
     }
     //Closing the file
-    file.close();
+    close(fd);
 } 
 
 //Main function for our method
